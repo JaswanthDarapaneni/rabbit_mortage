@@ -1,0 +1,22 @@
+
+services:
+  app:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      - DB_URI=mongodb://mongo:27017/defaultdb
+      - PORT=4000
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+      - C:\Users\giris\Desktop\Projects\api:/app
+
+volumes:
+  mongo-data:
